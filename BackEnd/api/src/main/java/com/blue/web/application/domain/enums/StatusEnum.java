@@ -1,15 +1,15 @@
 package com.blue.web.application.domain.enums;
 
 public enum StatusEnum {
-    INATIVO,
-    ATIVO;
+    INACTIVE,
+    ACTIVE;
 
     public boolean isAtivo() {
-        return this.equals(ATIVO);
+        return this.equals(ACTIVE);
     }
 
     public boolean isInativo() {
-        return this.equals(INATIVO);
+        return this.equals(INACTIVE);
     }
 
     public static StatusEnum get(String sigla){

@@ -13,7 +13,7 @@ public class UpdateDateStatusListener {
         entity.setDataAtualizacao(DateTimeUtil.obterDataHoraAtualDeBrasilia());
 
         if (entity.getStatus() == null) {
-            entity.setStatus(StatusEnum.ATIVO);
+            entity.setStatus(StatusEnum.ACTIVE);
         }
     }
 

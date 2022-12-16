@@ -22,17 +22,11 @@ public class Entity implements Serializable {
     @Access(AccessType.PROPERTY)
     protected Long id;
 
-    @Column(unique = true)
-    private String uuid = UUID.randomUUID().toString();
-
     @Column(nullable = false)
     private LocalDateTime dataCriacao;
 
-    @Column(nullable = false)
-    private LocalDateTime dataAtualizacao;
-
     @Enumerated(EnumType.STRING)
-    @Column(columnDefinition = "TEXT default 'ATIVO'")
+    @Column(columnDefinition = "TEXT default 'ACTIVE'")
     private StatusEnum status;
 
     public Entity() {
