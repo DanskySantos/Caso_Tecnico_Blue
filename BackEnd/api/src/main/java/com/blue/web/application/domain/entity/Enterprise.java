@@ -18,5 +18,5 @@ public class Enterprise extends Entity {
     private String name;
 
     @Column(nullable = false)
-    private String image;
+    private Image image;
 }
