@@ -3,8 +3,8 @@
     <h1>Evaluate the Enterprise</h1>
     <p class="lead">Evaluate the enterprise so that we can know your opinion!</p>
     <div class="text-center">
-      <but (click)="registerToggle()" class="btn btn-primary btn-lg mr-2" style="margin-right: 4px">Register</but>
-      <but class="btn btn-info btn-lg" style="color: white">Learn more</but>
+      <but (click)="registerToggle()" *ngIf="isUserLogged()" class="btn btn-primary btn-lg mr-2" style="margin-right: 4px">Register</but>
+      <but class="btn btn-info btn-lg" style="color: white" *ngIf="isUserLogged()">Learn more</but>
     </div>
   </div>
 

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
+import {User} from "../_models/user";
 
 @Component({
   selector: 'app-home',
@@ -22,4 +23,13 @@ export class HomeComponent implements OnInit {
     this.registerMode = event;
   }
 
+  isUserLogged () {
+    const user = <User><unknown>localStorage.getItem('user')
+
+    if (user.name == null) {
+      return false;
+    } else {
+      return true;
+    }
+  }
 }
