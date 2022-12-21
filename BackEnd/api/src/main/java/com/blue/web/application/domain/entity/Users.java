@@ -11,7 +11,7 @@ import javax.persistence.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class User extends Entity {
+public class Users extends Entity {
 
     @Column(nullable = false)
     private String name;

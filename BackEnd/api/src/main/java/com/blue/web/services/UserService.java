@@ -1,6 +1,6 @@
 package com.blue.web.services;
 
-import com.blue.web.application.domain.entity.User;
+import com.blue.web.application.domain.entity.Users;
 import com.blue.web.infrastructure.repositories.UserRepository;
 import com.blue.web.webapi.dtos.RegisterUserDTO;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,7 +17,7 @@ public class UserService {
     }
 
     public void register(RegisterUserDTO registerUserDTO) {
-        User user = new User();
+        Users user = new Users();
 
         user.setEmail(registerUserDTO.getEmail());
         user.setName(registerUserDTO.getName());

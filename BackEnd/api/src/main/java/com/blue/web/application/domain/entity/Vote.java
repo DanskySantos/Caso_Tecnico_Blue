@@ -1,5 +1,6 @@
 package com.blue.web.application.domain.entity;
 
+import com.sun.istack.NotNull;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,9 +14,11 @@ import javax.persistence.*;
 @NoArgsConstructor
 public class Vote extends Entity {
 
-    @OneToOne(fetch = FetchType.LAZY)
-    private User user;
+    @OneToOne(mappedBy = "vote", fetch = FetchType.LAZY, cascade = CascadeType.ALL)
+    private Users user;
 
-    @OneToOne(fetch = FetchType.LAZY)
+    @NotNull
+    @ManyToOne(optional = false, fetch = FetchType.LAZY)
+    @JoinColumn(name = "enterprise_id")
     private Enterprise enterprise;
 }

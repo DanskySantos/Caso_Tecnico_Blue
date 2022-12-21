@@ -7,12 +7,13 @@ import javax.persistence.Entity;
 import javax.persistence.*;
 import java.io.File;
 
+@javax.persistence.Entity
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
 @Getter
 @Setter
-public class Image {
+public class Image extends com.blue.web.application.domain.entity.Entity {
 
     @Type(type = "org.hibernate.type.TextType")
     private String link;
