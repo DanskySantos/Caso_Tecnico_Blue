@@ -30,7 +30,7 @@ public class UsersService {
         Users users = new Users();
 
         if (loginUserDTO.getEmail() != null) {
-            usersRepository.findByEmailIgnoreCase(loginUserDTO.getEmail());
+            users = usersRepository.findByEmailIgnoreCase(loginUserDTO.getEmail());
         } else {
             throw new RuntimeException("Incorrect login or password! Try to Register!");
         }
