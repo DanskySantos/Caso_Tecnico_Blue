@@ -6,6 +6,14 @@
       <but (click)="registerToggle()" *ngIf="isUserLogged()" class="btn btn-primary btn-lg mr-2" style="margin-right: 4px">Register</but>
       <but class="btn btn-info btn-lg" style="color: white" *ngIf="isUserLogged()">Learn more</but>
     </div>
+    <div *ngIf="alreadyVoted()">
+      <button class="btn btn-success mr-2"
+              style="margin-right: 4px; margin-top: 50px"
+              type="submit"
+              (click)="router.navigate(['/enterprises-list']);">
+        Click here to vote
+      </button>
+    </div>
   </div>
 
   <div *ngIf="registerMode" class="container">

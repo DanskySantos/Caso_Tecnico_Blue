@@ -3,12 +3,13 @@ import {HttpClient} from "@angular/common/http";
 import {map} from "rxjs/operators";
 import {ReplaySubject} from "rxjs";
 import {User} from "../_models/user";
+import {environment} from "../../environments/environment";
 
 @Injectable({
   providedIn: 'root'
 })
 export class AccountService {
-  baseUrl = 'http://localhost:8080/api/';
+  baseUrl = environment.baseUrl;
   private currentUserSource = new ReplaySubject<User>(1);
   currentUser$ = this.currentUserSource.asObservable();
 
@@ -16,8 +17,8 @@ export class AccountService {
 
   login(model:any) {
     return this.http.post(this.baseUrl + 'user/login', model).pipe(
-      map((response) => {
-        const user: any = response;
+      map((response: User) => {
+        let user: User = response;
         if (user) {
           localStorage.setItem('user', JSON.stringify(user));
           this.currentUserSource.next(user);

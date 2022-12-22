@@ -1,1 +1,63 @@
-<p>enterprises-list works!</p>
+<ng-container>
+  <div *ngIf="alreadyVoted()">
+    <div class="card-group">
+      <div class="card"
+           style="width: 18rem; padding-left: 3rem; padding-right: 3rem; padding-top: 3rem; text-align: center; border-radius: 3rem; margin-right: 3rem">
+        <div>
+          <img class="card-img-top"
+               src="https://www.imoveisluxuososemsaopaulo.com.br/uploads/imovel/galeria/thumb-8fce3f9f871564f78e2ad61313fbb389.jpeg"
+               alt="Card image cap"
+               style="height: 350px; width: content-box; text-align: center; border-radius: 10px">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Le Jardin</h5>
+          <!--      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's-->
+          <!--        content.</p>-->
+          <div style="text-align: center; padding-top: 40px">
+            <button href="#" (click)="vote1()" class="btn btn-primary">Vote!</button>
+          </div>
+        </div>
+      </div>
+      <div class="card"
+           style="width: 18rem; padding-left: 3rem; padding-right: 3rem; padding-top: 3rem; text-align: center; border-radius: 3rem; margin-right: 3rem">
+        <div>
+          <img class="card-img-top"
+               src="https://midias.jornalcruzeiro.com.br/wp-content/uploads/2019/11/Sorocaba-ter%C3%A1-um-dos-pr%C3%A9dios-mais-altos.jpg"
+               alt="Card image cap"
+               style="height: 350px; width: content-box; text-align: center; border-radius: 10px">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Evian</h5>
+          <!--      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's-->
+          <!--        content.</p>-->
+          <div style="text-align: center; padding-top: 40px">
+            <button href="#" (click)="vote2()" class="btn btn-primary">Vote!</button>
+          </div>
+        </div>
+      </div>
+      <div class="card"
+           style="width: 18rem; padding-left: 3rem; padding-right: 3rem; padding-top: 3rem; text-align: center; border-radius: 3rem; margin-right: 3rem">
+        <div>
+          <img class="card-img-top"
+               src="https://img.kenlo.io/VWRCUkQ2Tnp3d1BJRDBJVe1szkhnWr9UfpZS9ftWwjXgr7v5Znen3XVcMHllDVRJJeIbi3YwVYEtu2Z17cpj7wcJg5EkQbSlnhjY5KrOu4yXjmeJyLzYkOPKi8-STcjd5q0Q4aj3V0yhvvM8Z%2BEVaW1cZMJxSw7jQamkJCFBuxO9unfTTKVqHGBX5goWnStiwniBfrv811MexyisBMnGtHe0QLH8B15NOLMNAdsz6EIJ9xa9SUxy8h8d55m-oS7TO7S-K5%2BhxzlXFx5k9oa%2BSqu619jCLJU4Vr0lNm4L5VMZWe0S2-TJT-8%2B5wEDqv3JFhXchgzWgPAoc9j0QdxKnaAcll6VH%2BFGvBrqwNHE1vOob0uGOlM087iWqqCzNKr7Sv-seGerj9QO-5PZPcMWLIepG2NMQTMlcH9WuUDXtevAoQz5bD3YuBAVFULf1o4moXZrYEdR-9tf52I%3D.jpg"
+               alt="Card image cap"
+               style="height: 350px; width: content-box; text-align: center; border-radius: 10px">
+        </div>
+        <div class="card-body">
+          <h5 class="card-title">Olímpia Thermas</h5>
+          <!--      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's-->
+          <!--        content.</p>-->
+          <div style="text-align: center; padding-top: 40px">
+            <button href="#" (click)="vote3()" class="btn btn-primary">Vote!</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div style="text-align: center; margin-top: 100px">
+      <h5>You only have one vote! Choose wisely!</h5>
+    </div>
+  </div>
+  <div *ngIf="!alreadyVoted()" style="text-align: center; scale: 200%; margin-top: 200px">
+    <h6>You already voted! Thanks!</h6>
+  </div>
+</ng-container>

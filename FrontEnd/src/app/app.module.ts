@@ -5,7 +5,7 @@ import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NavComponent} from './nav/nav.component';
-import {FormsModule} from "@angular/forms";
+import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
 import {ListsComponent} from './lists/lists.component';
@@ -13,8 +13,8 @@ import {SharedModule} from "./_modules/shared.module";
 import {ErrorInterceptor} from "./_interceptors/error.interceptor";
 import {NotFoundComponent} from './errors/not-found/not-found.component';
 import {ServerErrorComponent} from './errors/server-error/server-error.component';
-import { EnterprisesListComponent } from './enterprises-list/enterprises-list.component';
-import { EnterprisesVoteComponent } from './enterprises-list/enterprises-vote/enterprises-vote.component';
+import {EnterprisesListComponent} from './enterprises-list/enterprises-list.component';
+import { TextFieldComponent } from './_components/text-field/text-field.component';
 
 @NgModule({
   declarations: [
@@ -26,7 +26,7 @@ import { EnterprisesVoteComponent } from './enterprises-list/enterprises-vote/en
     NotFoundComponent,
     ServerErrorComponent,
     EnterprisesListComponent,
-    EnterprisesVoteComponent
+    TextFieldComponent
   ],
   imports: [
     BrowserModule,
@@ -34,7 +34,8 @@ import { EnterprisesVoteComponent } from './enterprises-list/enterprises-vote/en
     HttpClientModule,
     BrowserAnimationsModule,
     FormsModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}

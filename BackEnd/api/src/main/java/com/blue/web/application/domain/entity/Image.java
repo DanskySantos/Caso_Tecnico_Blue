@@ -1,39 +1,20 @@
 package com.blue.web.application.domain.entity;
 
-import lombok.*;
-import org.hibernate.annotations.Type;
+import lombok.AllArgsConstructor;
+import lombok.Builder;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
-import javax.persistence.Entity;
-import javax.persistence.*;
-import java.io.File;
-
-@javax.persistence.Entity
-@NoArgsConstructor
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 @Builder
-@Getter
-@Setter
-public class Image extends com.blue.web.application.domain.entity.Entity {
+@javax.persistence.Entity
+public class Image extends Entity {
 
-    @Type(type = "org.hibernate.type.TextType")
-    private String link;
+    private String title;
+    private String description;
+    private String imagePath;
+    private String imageFileName;
 
-    @Transient
-    private File file;
-
-    public String getLink() {
-        return link;
-    }
-
-    public void setLink(String arquivo) {
-        this.link = arquivo;
-    }
-
-    public File getFile() {
-        return file;
-    }
-
-    public void setFile(File file) {
-        this.file = file;
-    }
 }

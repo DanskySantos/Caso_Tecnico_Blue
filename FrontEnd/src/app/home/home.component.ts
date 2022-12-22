@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import {HttpClient} from "@angular/common/http";
 import {User} from "../_models/user";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-home',
@@ -10,7 +11,7 @@ import {User} from "../_models/user";
 export class HomeComponent implements OnInit {
   registerMode = false;
 
-  constructor() { }
+  constructor(private router: Router) { }
 
   ngOnInit(): void {
   }
@@ -29,6 +30,12 @@ export class HomeComponent implements OnInit {
     if (user.name == null) {
       return false;
     } else {
+      return true;
+    }
+  }
+
+  public alreadyVoted() {
+    if (localStorage.getItem('user.vote') === null) {
       return true;
     }
   }

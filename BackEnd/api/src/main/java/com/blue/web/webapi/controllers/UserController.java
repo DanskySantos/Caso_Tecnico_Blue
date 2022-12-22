@@ -41,7 +41,9 @@ public class UserController {
         if (StringUtils.isEmpty(loginUserDTO.getPassword()))
             throw new RuntimeException("Password should not be null!");
 
-        return this.usersService.login(loginUserDTO);
+        LoginUserDTO login = this.usersService.login(loginUserDTO);
+
+        return login;
     }
 
     @GetMapping(value = "/get")
