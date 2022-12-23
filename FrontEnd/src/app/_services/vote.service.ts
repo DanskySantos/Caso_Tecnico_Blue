@@ -4,23 +4,19 @@ import {environment} from "../../environments/environment";
 import {Enterprise} from "../_models/enterprise";
 import {map} from "rxjs/operators";
 import {User} from "../_models/user";
+import {SendVote} from "../_models/sendVote";
 
 @Injectable({
   providedIn: 'root'
 })
-export class EnterprisesService {
+export class VoteService {
   baseUrl = environment.baseUrl;
 
   constructor(private http: HttpClient) {
   }
 
-  vote1(model: Enterprise) {
-    return this.http.post(this.baseUrl + 'vote', model);
-  }
-  vote2(model: Enterprise) {
-    return this.http.post(this.baseUrl + 'vote', model);
-  }
-  vote3(model: Enterprise) {
+  vote(model: SendVote) {
+    console.log('service')
     return this.http.post(this.baseUrl + 'vote', model);
   }
 }

@@ -1,7 +1,7 @@
-import { Component, OnInit } from '@angular/core';
-import {HttpClient} from "@angular/common/http";
-import {User} from "../_models/user";
+import {Component, OnInit} from '@angular/core';
 import {Router} from "@angular/router";
+import {UsersService} from "../_services/users.service";
+import {User} from "../_models/user";
 
 @Component({
   selector: 'app-home',
@@ -10,8 +10,10 @@ import {Router} from "@angular/router";
 })
 export class HomeComponent implements OnInit {
   registerMode = false;
+  user: User = JSON.parse(localStorage.getItem('user'));
 
-  constructor(private router: Router) { }
+  constructor(private router: Router,
+              private usersService: UsersService) { }
 
   ngOnInit(): void {
   }
@@ -25,18 +27,28 @@ export class HomeComponent implements OnInit {
   }
 
   isUserLogged () {
-    const user = <User><unknown>localStorage.getItem('user')
+    const user = localStorage.getItem('user')
 
-    if (user.name == null) {
-      return false;
-    } else {
+    if (user === null) {
       return true;
+    } else {
+      return false;
     }
   }
 
-  public alreadyVoted() {
-    if (localStorage.getItem('user.vote') === null) {
+  isVoted () {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    if (user.voteId === null) {
       return true;
+    } else {
+      return false;
     }
+  }
+
+  private getUser() {
+    this.usersService.getUser(this.user.email).subscribe(updatedUser => {
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+    });
   }
 }

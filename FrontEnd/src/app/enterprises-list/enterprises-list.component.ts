@@ -2,6 +2,13 @@ import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
 import {EnterprisesService} from "../_services/enterprises.service";
 import {Enterprise} from "../_models/enterprise";
+import {VoteService} from "../_services/vote.service";
+import {SendVote} from "../_models/sendVote";
+import {VoteResponse} from "../_models/voteResponse";
+import {UsersService} from "../_services/users.service";
+import {User} from "../_models/user";
+import {ToastrService} from "ngx-toastr";
+import {Router} from "@angular/router";
 
 @Component({
   selector: 'app-enterprises-list',
@@ -12,16 +19,25 @@ export class EnterprisesListComponent implements OnInit {
 
   form: FormGroup;
   enterprisesList: Enterprise[];
-  enterprise: Enterprise;
-  toFile;
+  user: User = JSON.parse(localStorage.getItem('user'));
 
-  constructor(private enterpriseService: EnterprisesService) {
+  constructor(private voteService: VoteService,
+              private usersService: UsersService,
+              private enterprisesService: EnterprisesService,
+              private toastr: ToastrService,
+              private router: Router) {
   }
 
   ngOnInit(): void {
-
+    this.getUser();
     this.configurarForm();
-    // this.listEnterprises();
+    this.listEnterprises();
+  }
+
+  private getUser() {
+    this.usersService.getUser(this.user.email).subscribe(updatedUser => {
+      localStorage.setItem('user', JSON.stringify(updatedUser))
+    });
   }
 
   private configurarForm() {
@@ -31,27 +47,33 @@ export class EnterprisesListComponent implements OnInit {
     });
   }
 
-  // private listEnterprises() {
-  //   this.enterpriseService.listEnterprises().subscribe(enterprises => {
-  //     this.enterprisesList = enterprises;
-  //   });
-  // }
+  private listEnterprises() {
+    this.enterprisesService.listEnterprises().subscribe(enterprises => {
+      this.enterprisesList = <Enterprise[]>enterprises;
+    });
+  }
 
-  public alreadyVoted() {
-    if (localStorage.getItem('user.vote') === null) {
+  isVoted() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    if (user.voteId === null) {
       return true;
+    } else {
+      return false;
     }
   }
 
-  vote1() {
-
-  }
-
-  vote2() {
-
-  }
-
-  vote3() {
-
+  vote(enumName: string) {
+    const send: SendVote = {
+      user: JSON.parse(localStorage.getItem('user')),
+      enterprise: enumName
+    };
+    this.voteService.vote(send).subscribe(res => {
+      console.log(res)
+    },error => {
+      console.log(error)
+      this.toastr.error('You already voted!')
+    });
+    this.router.navigateByUrl('/');
   }
 }

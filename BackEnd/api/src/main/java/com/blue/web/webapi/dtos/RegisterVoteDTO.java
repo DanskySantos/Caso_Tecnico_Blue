@@ -1,6 +1,5 @@
 package com.blue.web.webapi.dtos;
 
-import com.blue.web.application.domain.entity.Enterprise;
 import com.blue.web.application.domain.entity.Users;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -15,5 +14,5 @@ public class RegisterVoteDTO {
 
     private Users user;
 
-    private Enterprise enterprise;
+    private String enterprise;
 }

@@ -2,10 +2,12 @@ package com.blue.web.services;
 
 import com.blue.web.application.domain.entity.Users;
 import com.blue.web.infrastructure.repositories.UsersRepository;
-import com.blue.web.webapi.dtos.LoginUserDTO;
+import com.blue.web.webapi.dtos.UserDTO;
 import com.blue.web.webapi.dtos.RegisterUserDTO;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
+
+import java.util.Objects;
 
 @Service
 public class UsersService {
@@ -16,34 +18,47 @@ public class UsersService {
         this.usersRepository = usersRepository;
     }
 
-    public void register(RegisterUserDTO registerUserDTO) {
+    public UserDTO register(RegisterUserDTO registerUserDTO) {
         Users user = new Users();
 
-        user.setEmail(registerUserDTO.getEmail());
-        user.setName(registerUserDTO.getName());
-        user.setPassword(registerUserDTO.getPassword());
+        UserDTO userDto = new UserDTO();
 
-        usersRepository.save(user);
+        if (usersRepository.findByEmailIgnoreCase(registerUserDTO.getEmail()) == null) {
+            user.setEmail(registerUserDTO.getEmail());
+            user.setName(registerUserDTO.getName());
+            user.setPassword(registerUserDTO.getPassword());
+
+            usersRepository.save(user);
+
+            userDto.setName(user.getName());
+            userDto.setEmail(user.getEmail());
+            userDto.setPassword(user.getPassword());
+        } else {
+            if (Objects.equals(registerUserDTO.getEmail(), usersRepository.findByEmailIgnoreCase(registerUserDTO.getEmail()).getEmail())) {
+                throw new RuntimeException("You are already registered!");
+            }
+        }
+        return userDto;
     }
 
-    public LoginUserDTO login(LoginUserDTO loginUserDTO) {
+    public Object login(UserDTO userDTO) {
         Users users = new Users();
 
-        if (loginUserDTO.getEmail() != null) {
-            users = usersRepository.findByEmailIgnoreCase(loginUserDTO.getEmail());
+        if (userDTO.getEmail() != null) {
+            users = usersRepository.findByEmailIgnoreCase(userDTO.getEmail());
         } else {
             throw new RuntimeException("Incorrect login or password! Try to Register!");
         }
 
-        if (!StringUtils.equals(users.getPassword(), loginUserDTO.getPassword())) {
+        if (!StringUtils.equals(users.getPassword(), userDTO.getPassword())) {
             throw new RuntimeException("Invalid password!");
         }
 
-        if (!StringUtils.equals(users.getEmail(), loginUserDTO.getEmail())) {
+        if (!StringUtils.equals(users.getEmail(), userDTO.getEmail())) {
             throw new RuntimeException("Invalid email!");
         }
 
-        LoginUserDTO userToReturn = new LoginUserDTO();
+        UserDTO userToReturn = new UserDTO();
 
         userToReturn.setEmail(users.getEmail());
         userToReturn.setName(users.getName());
@@ -52,9 +67,18 @@ public class UsersService {
         return userToReturn;
     }
 
-    public void retrieve(RegisterUserDTO registerUserDTO) {
+    public UserDTO retrieve(String email) {
+        UserDTO userDTO = new UserDTO();
 
-        usersRepository.findByEmailIgnoreCase(registerUserDTO.getEmail());
+        Users user = usersRepository.findByEmailIgnoreCase(email);
+
+        userDTO.setEmail(user.getEmail());
+        userDTO.setName(user.getName());
+        if (user.getVote() != null) {
+            userDTO.setVoteId(user.getVote().getId());
+        }
+
+        return userDTO;
     }
 
 }

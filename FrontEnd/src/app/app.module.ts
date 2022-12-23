@@ -8,7 +8,6 @@ import {NavComponent} from './nav/nav.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
 import {RegisterComponent} from './register/register.component';
-import {ListsComponent} from './lists/lists.component';
 import {SharedModule} from "./_modules/shared.module";
 import {ErrorInterceptor} from "./_interceptors/error.interceptor";
 import {NotFoundComponent} from './errors/not-found/not-found.component';
@@ -22,21 +21,20 @@ import { TextFieldComponent } from './_components/text-field/text-field.componen
     NavComponent,
     HomeComponent,
     RegisterComponent,
-    ListsComponent,
     NotFoundComponent,
     ServerErrorComponent,
     EnterprisesListComponent,
     TextFieldComponent
   ],
-  imports: [
-    BrowserModule,
-    AppRoutingModule,
-    HttpClientModule,
-    BrowserAnimationsModule,
-    FormsModule,
-    SharedModule,
-    ReactiveFormsModule
-  ],
+    imports: [
+        BrowserModule,
+        AppRoutingModule,
+        HttpClientModule,
+        BrowserAnimationsModule,
+        FormsModule,
+        SharedModule,
+        ReactiveFormsModule,
+    ],
   providers: [
     {provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true}
   ],

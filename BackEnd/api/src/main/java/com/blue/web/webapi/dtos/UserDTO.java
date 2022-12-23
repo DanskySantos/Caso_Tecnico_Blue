@@ -7,8 +7,9 @@ import lombok.*;
 @Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class EnterpriseDTO {
+public class UserDTO {
     private String name;
-    private String image;
-    private String enumName;
+    private String email;
+    private String password;
+    private Long voteId;
 }

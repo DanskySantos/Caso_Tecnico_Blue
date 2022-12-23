@@ -9,8 +9,8 @@ import lombok.*;
 @Builder
 public class StandardAnswerDTO {
 
-    private boolean sucesso = false;
+    private boolean sucess = false;
 
-    private String mensagem;
+    private String message;
 
 }

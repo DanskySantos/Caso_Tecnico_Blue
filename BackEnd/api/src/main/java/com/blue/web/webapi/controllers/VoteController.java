@@ -1,6 +1,7 @@
 package com.blue.web.webapi.controllers;
 
 
+import com.blue.web.application.domain.enums.EnterpriseEnum;
 import com.blue.web.services.VoteService;
 import com.blue.web.webapi.dtos.RegisterVoteDTO;
 import com.blue.web.webapi.dtos.StandardAnswerDTO;
