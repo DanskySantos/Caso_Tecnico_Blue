@@ -1,12 +1,12 @@
 import {Component, OnInit} from '@angular/core';
 import {FormControl, FormGroup} from '@angular/forms';
-import {EnterprisesService} from "../_services/enterprises.service";
-import {Enterprise} from "../_models/enterprise";
-import {VoteService} from "../_services/vote.service";
-import {SendVote} from "../_models/sendVote";
-import {VoteResponse} from "../_models/voteResponse";
-import {UsersService} from "../_services/users.service";
-import {User} from "../_models/user";
+import {EnterprisesService} from "../../_services/enterprises.service";
+import {Enterprise} from "../../_models/enterprise";
+import {VoteService} from "../../_services/vote.service";
+import {SendVote} from "../../_models/sendVote";
+import {VoteResponse} from "../../_models/voteResponse";
+import {UsersService} from "../../_services/users.service";
+import {User} from "../../_models/user";
 import {ToastrService} from "ngx-toastr";
 import {Router} from "@angular/router";
 

@@ -4,15 +4,15 @@ import {AppRoutingModule} from './app-routing.module';
 import {AppComponent} from './app.component';
 import {HTTP_INTERCEPTORS, HttpClientModule} from "@angular/common/http";
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NavComponent} from './nav/nav.component';
+import {NavComponent} from './_components/nav/nav.component';
 import {FormsModule, ReactiveFormsModule} from "@angular/forms";
 import {HomeComponent} from './home/home.component';
-import {RegisterComponent} from './register/register.component';
+import {RegisterComponent} from './_components/register/register.component';
 import {SharedModule} from "./_modules/shared.module";
 import {ErrorInterceptor} from "./_interceptors/error.interceptor";
 import {NotFoundComponent} from './errors/not-found/not-found.component';
 import {ServerErrorComponent} from './errors/server-error/server-error.component';
-import {EnterprisesListComponent} from './enterprises-list/enterprises-list.component';
+import {EnterprisesListComponent} from './_components/enterprises-list/enterprises-list.component';
 import { TextFieldComponent } from './_components/text-field/text-field.component';
 
 @NgModule({

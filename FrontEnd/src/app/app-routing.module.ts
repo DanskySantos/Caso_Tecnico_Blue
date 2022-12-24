@@ -4,8 +4,8 @@ import {HomeComponent} from "./home/home.component";
 import {AuthGuard} from "./_guards/auth.guard";
 import {NotFoundComponent} from "./errors/not-found/not-found.component";
 import {ServerErrorComponent} from "./errors/server-error/server-error.component";
-import {EnterprisesListComponent} from "./enterprises-list/enterprises-list.component";
-import {RegisterComponent} from "./register/register.component";
+import {EnterprisesListComponent} from "./_components/enterprises-list/enterprises-list.component";
+import {RegisterComponent} from "./_components/register/register.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
