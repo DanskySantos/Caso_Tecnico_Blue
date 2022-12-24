@@ -36,7 +36,17 @@ export class HomeComponent implements OnInit {
     }
   }
 
-  isVoted () {
+  isVoted() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    if (user === null) {
+      return true;
+    } else {
+      return false;
+    }
+  }
+
+  isToShow() {
     const user: User = JSON.parse(localStorage.getItem('user'));
 
     if (user.voteId === null) {

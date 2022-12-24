@@ -5,10 +5,12 @@ import {AuthGuard} from "./_guards/auth.guard";
 import {NotFoundComponent} from "./errors/not-found/not-found.component";
 import {ServerErrorComponent} from "./errors/server-error/server-error.component";
 import {EnterprisesListComponent} from "./enterprises-list/enterprises-list.component";
+import {RegisterComponent} from "./register/register.component";
 
 const routes: Routes = [
   {path: '', component: HomeComponent},
   {path: 'enterprises-list', component: EnterprisesListComponent, canActivate: [AuthGuard]},
+  {path: 'app-register', component: RegisterComponent},
   {path: 'not-found', component: NotFoundComponent},
   {path: 'server-error', component: ServerErrorComponent},
   {path: '**', component: NotFoundComponent, pathMatch: 'full'}

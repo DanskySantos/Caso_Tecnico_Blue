@@ -63,6 +63,7 @@ public class UsersService {
         userToReturn.setEmail(users.getEmail());
         userToReturn.setName(users.getName());
         userToReturn.setPassword(users.getPassword());
+        userToReturn.setVoteId(users.getVote().getId());
 
         return userToReturn;
     }

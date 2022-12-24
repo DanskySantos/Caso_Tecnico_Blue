@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AccountService} from "../_services/account.service";
 import {Router} from "@angular/router";
 import {ToastrService} from "ngx-toastr";
+import {User} from "../_models/user";
 
 @Component({
   selector: 'app-nav',
@@ -30,5 +31,15 @@ export class NavComponent implements OnInit {
   logout() {
     this.accountService.logout();
     this.router.navigateByUrl('/');
+  }
+
+  isToShow() {
+    const user: User = JSON.parse(localStorage.getItem('user'));
+
+    if (user.voteId === null) {
+      return true;
+    } else {
+      return false;
+    }
   }
 }
